@@ -4,6 +4,9 @@ const $form = document.querySelector('form');
 const $ul = document.querySelector('ul');
 const $noEntries = document.querySelector('#no-entries');
 
+const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
+const $entriesDiv = document.querySelector('[data-view="entries"]');
+
 $photoURL.addEventListener('input', event => {
   const url = event.target.value;
   $photoPreview.setAttribute('src', url);
@@ -59,6 +62,20 @@ function renderEntry(entry) {
 function toggleNoEntries() {
   $noEntries.classList.toggle('hidden');
 }
+
+function viewSwap(view) {
+  if (view === 'entries') {
+    $entriesDiv.classList.remove('hidden');
+    $entryFormDiv.classList.add('hidden');
+  } else if (view === 'entry-form') {
+    $entriesDiv.classList.add('hidden');
+    $entryFormDiv.classList.remove('hidden');
+  }
+
+  data.view = view;
+}
+
+viewSwap($entriesDiv);
 
 document.addEventListener('DOMContentLoaded', event => {
   for (let i = 0; i < data.entries.length; i++) {
