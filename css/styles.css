@@ -13,8 +13,9 @@ form h2 {
   font-weight: 600;
 }
 
-form img {
+img {
   width: 100%;
+  border-radius: 0.25rem;
 }
 
 label {
@@ -68,4 +69,28 @@ textarea:focus {
   border-radius: 0.25rem;
   padding: 0.5rem 1.2rem;
   cursor: pointer;
+}
+
+/* Issue 2 */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.9rem;
+  letter-spacing: 0.04rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
