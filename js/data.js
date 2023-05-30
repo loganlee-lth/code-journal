@@ -9,5 +9,9 @@ var data = {
 
 window.addEventListener('beforeunload', event => {
   const dataJSON = JSON.stringify(data);
-  localStorage.setItem('data', dataJSON);
+  localStorage.setItem('localStorage', dataJSON);
 });
+
+if (localStorage.getItem('localStorage') !== null) {
+  data = JSON.parse(localStorage.getItem('localStorage'));
+}
