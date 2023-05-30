@@ -94,3 +94,8 @@ p {
   margin-top: 1rem;
   margin-bottom: 0;
 }
+
+.no-entry-row {
+  display: flex;
+  justify-content: center;
+}
