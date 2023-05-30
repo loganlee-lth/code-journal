@@ -1,0 +1,71 @@
+header {
+  background-color: #562b81;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+form h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+form img {
+  width: 100%;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  font-size: 1.1rem;
+  font-family: "Proza Libre", sans-serif;
+  border: 0.08rem solid #b6b6b6;
+  border-radius: 0.25rem;
+  padding: 0.7rem;
+}
+
+form textarea {
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  outline-color: #562b81;
+}
+
+.title-input-row {
+  margin-bottom: 2rem;
+}
+
+.notes-label-row {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.button-row {
+  margin-top: 0.9rem;
+}
+
+.button-row-flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.save-button {
+  text-transform: uppercase;
+  background-color: #562b81;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+}

@@ -11,17 +11,72 @@
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h1>Code Journal</h1>
+        </div>
+      </div>
     </div>
   </header>
+  <!-- Main -->
   <main class="container">
-    <div data-view="entry-form"></div>
+    <div data-view="entry-form">
+      <form>
+        <div class="row">
+          <div class="column-full">
+            <h2>New Entry</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-half">
+            <img src="./images/placeholder-image-square.jpg" alt="placeholder iamge" id="photo-preview">
+          </div>
+          <div class="column-half">
+            <div class="row">
+              <label for="title">Title</label>
+            </div>
+            <div class="row title-input-row">
+              <input type="text" id="title" name="title" required>
+            </div>
+            <div class="row">
+              <label for="photo-url">Photo URL</label>
+            </div>
+            <div class="row">
+              <input type="url" id="photo-url" name="url" required>
+            </div>
+          </div>
+        </div>
+        <!-- Notes -->
+        <div class="row notes-label-row">
+          <div class="column-full">
+            <label for="notes">Notes</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <textarea name="notes" id="notes" rows="7" required></textarea>
+          </div>
+        </div>
+        <!-- Save button -->
+        <div class="row button-row">
+          <div class="column-full button-row-flex">
+            <button type="submit" class="save-button">save</button>
+          </div>
+        </div>
+      </form>
+    </div>
     <div data-view="entries" class="hidden"></div>
   </main>
   <script src="js/data.js"></script>
