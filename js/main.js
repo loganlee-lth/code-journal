@@ -2,6 +2,7 @@ const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
 const $ul = document.querySelector('ul');
+const $noEntries = document.querySelector('#no-entries');
 
 $photoURL.addEventListener('input', event => {
   const url = event.target.value;
@@ -35,7 +36,6 @@ function renderEntry(entry) {
 
   const $infoCol = document.createElement('div');
   $infoCol.setAttribute('class', 'column-half');
-
   const $titleRow = document.createElement('div');
   $titleRow.setAttribute('class', 'row');
   const $entryTitle = document.createElement('h3');
@@ -56,8 +56,14 @@ function renderEntry(entry) {
   return $li;
 }
 
+function toggleNoEntries() {
+  $noEntries.classList.toggle('hidden');
+}
+
 document.addEventListener('DOMContentLoaded', event => {
   for (let i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
 });
+
+toggleNoEntries();
