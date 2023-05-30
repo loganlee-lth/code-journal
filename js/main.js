@@ -1,6 +1,7 @@
 const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
+const $ul = document.querySelector('ul');
 
 $photoURL.addEventListener('input', event => {
   const url = event.target.value;
@@ -55,4 +56,8 @@ function renderEntry(entry) {
   return $li;
 }
 
-renderEntry(data);
+document.addEventListener('DOMContentLoaded', event => {
+  for (let i = 0; i < data.entries.length; i++) {
+    $ul.appendChild(renderEntry(data.entries[i]));
+  }
+});
