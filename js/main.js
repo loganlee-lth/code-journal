@@ -9,11 +9,13 @@ $photoURL.addEventListener('input', event => {
 
 $form.addEventListener('submit', event => {
   event.preventDefault();
+
   const entryJSON = {};
   entryJSON.title = $form.elements.title.value;
   entryJSON.photoURL = $form.elements.url.value;
   entryJSON.notes = $form.elements.notes.value;
   entryJSON.entryID = data.nextEntryId;
+
   data.nextEntryId++;
   data.entries.unshift(entryJSON);
   $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
