@@ -1,4 +1,5 @@
 const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
+const $entryFormTitle = document.querySelector('#entry-form-title');
 const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
@@ -21,7 +22,7 @@ $form.addEventListener('submit', event => {
   entryObj.title = $form.elements.title.value;
   entryObj.photoURL = $form.elements.url.value;
   entryObj.notes = $form.elements.notes.value;
-  entryObj.entryID = data.nextEntryId;
+  entryObj.entryId = data.nextEntryId;
 
   data.nextEntryId++;
   data.entries.unshift(entryObj);
@@ -103,6 +104,25 @@ document.addEventListener('DOMContentLoaded', event => {
 $entryFormAnchor.addEventListener('click', function (event) {
   viewSwap('entries');
 });
+
 $entriesAnchor.addEventListener('click', function (event) {
   viewSwap('entry-form');
+});
+
+$ul.addEventListener('click', event => {
+  if (event.target.tagName === 'I') {
+    const clickedEntryId = Number(event.target.closest('li').dataset.entryId);
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === clickedEntryId) {
+        data.editing = data.entries[i];
+      }
+    }
+    $entryFormTitle.textContent = 'Edit Entry';
+    $form.elements.title.value = data.editing.title;
+    $form.elements.url.value = data.editing.photoURL;
+    $photoPreview.setAttribute('src', data.editing.photoURL);
+    $form.elements.notes.value = data.editing.notes;
+
+    viewSwap('entry-form');
+  }
 });
