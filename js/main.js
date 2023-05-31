@@ -24,17 +24,31 @@ $form.addEventListener('submit', event => {
   entryObj.notes = $form.elements.notes.value;
   entryObj.entryId = data.nextEntryId;
 
-  data.nextEntryId++;
-  data.entries.unshift(entryObj);
-  $ul.prepend(renderEntry(entryObj));
-  $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
-  $form.reset();
+  if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(entryObj);
+    $ul.prepend(renderEntry(entryObj));
+  } else if (data.editing !== null) {
+    entryObj.entryId = data.editing.entryId;
 
-  viewSwap('entries');
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i] = entryObj;
+      }
+    }
+
+    const $oldEntryLi = document.querySelector("[data-entry-id='" + entryObj.entryId + "']");
+    $oldEntryLi.replaceWith(renderEntry(entryObj));
+    $entryFormTitle.textContent = 'New Entry';
+    data.editing = null;
+  }
 
   if (data.entries.length > 0) {
     toggleNoEntries();
   }
+  $form.reset();
+  $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
+  viewSwap('entries');
 });
 
 function renderEntry(entry) {
@@ -55,7 +69,7 @@ function renderEntry(entry) {
   const $entryTitle = document.createElement('h3');
   $entryTitle.textContent = entry.title;
   const $entryEditIcon = document.createElement('i');
-  $entryEditIcon.setAttribute('class', 'fa-solid fa-pencil fa-lg');
+  $entryEditIcon.setAttribute('class', 'fa-solid fa-pencil fa-xl');
   const $notesRow = document.createElement('div');
   $notesRow.setAttribute('class', 'row');
   const $entryNotes = document.createElement('p');
@@ -65,10 +79,8 @@ function renderEntry(entry) {
   $imgCol.appendChild($img);
   $li.appendChild($infoCol);
   $infoCol.appendChild($titleRow);
-  // Pencil
   $titleRow.appendChild($entryTitle);
   $titleRow.appendChild($entryEditIcon);
-  //
   $infoCol.appendChild($notesRow);
   $notesRow.appendChild($entryNotes);
 
@@ -111,7 +123,7 @@ $entriesAnchor.addEventListener('click', function (event) {
 
 $ul.addEventListener('click', event => {
   if (event.target.tagName === 'I') {
-    const clickedEntryId = Number(event.target.closest('li').dataset.entryId);
+    const clickedEntryId = Number(event.target.closest('li').getAttribute('data-entry-id'));
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === clickedEntryId) {
         data.editing = data.entries[i];
