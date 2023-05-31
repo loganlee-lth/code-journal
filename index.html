@@ -33,7 +33,7 @@
   </header>
   <!-- Main -->
   <main class="container">
-    <div data-view="entry-form" class="hidden">
+    <div data-view="entry-form">
       <form>
         <div class="row">
           <div class="column-full">
@@ -73,19 +73,17 @@
         <!-- Save button -->
         <div class="row button-row">
           <div class="column-full button-row-flex">
-            <button type="submit" class="save-button">save</button>
+            <button type="submit" class="purple-button">save</button>
           </div>
         </div>
       </form>
     </div>
     <!-- View entries -->
-    <div data-view="entries">
+    <div data-view="entries" class="hidden">
       <div class="row">
-        <div class="column-half">
+        <div class="column-full space-between">
           <h2>Entries</h2>
-        </div>
-        <div class="column-half new-button">
-          <a id="new">new</a>
+          <a id="new" class="purple-button">new</a>
         </div>
       </div>
       <div id="no-entries" class="row">

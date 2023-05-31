@@ -1,12 +1,12 @@
+const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
 const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
+const $entryFormAnchor = document.querySelector('#navbar-anchor');
+
+const $entriesDiv = document.querySelector('[data-view="entries"]');
 const $ul = document.querySelector('ul');
 const $noEntries = document.querySelector('#no-entries');
-
-const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
-const $entriesDiv = document.querySelector('[data-view="entries"]');
-const $entryFormAnchor = document.querySelector('#navbar-anchor');
 const $entriesAnchor = document.querySelector('#new');
 
 $photoURL.addEventListener('input', event => {
@@ -17,15 +17,15 @@ $photoURL.addEventListener('input', event => {
 $form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const entryJSON = {};
-  entryJSON.title = $form.elements.title.value;
-  entryJSON.photoURL = $form.elements.url.value;
-  entryJSON.notes = $form.elements.notes.value;
-  entryJSON.entryID = data.nextEntryId;
+  const entryObj = {};
+  entryObj.title = $form.elements.title.value;
+  entryObj.photoURL = $form.elements.url.value;
+  entryObj.notes = $form.elements.notes.value;
+  entryObj.entryID = data.nextEntryId;
 
-  $ul.prepend(renderEntry(entryJSON));
   data.nextEntryId++;
-  data.entries.unshift(entryJSON);
+  data.entries.unshift(entryObj);
+  $ul.prepend(renderEntry(entryObj));
   $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
   $form.reset();
 
@@ -69,7 +69,7 @@ function renderEntry(entry) {
 }
 
 function toggleNoEntries() {
-  $noEntries.classList.toggle('hidden');
+  $noEntries.classList.add('hidden');
 }
 
 function viewSwap(view) {
@@ -87,6 +87,10 @@ function viewSwap(view) {
 document.addEventListener('DOMContentLoaded', event => {
   for (let i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
+  }
+  viewSwap(data.view);
+  if (data.entries.length === 0) {
+    toggleNoEntries();
   }
 });
 

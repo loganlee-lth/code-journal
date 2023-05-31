@@ -61,7 +61,7 @@ textarea:focus {
   justify-content: flex-end;
 }
 
-.save-button {
+.purple-button {
   text-transform: uppercase;
   background-color: #562b81;
   color: #fff;
@@ -113,18 +113,8 @@ header a {
   margin-left: 1.2rem;
 }
 
-.new-button {
+.space-between {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
-}
-
-#new {
-  text-transform: uppercase;
-  background-color: #562b81;
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1.2rem;
-  cursor: pointer;
 }
