@@ -80,6 +80,12 @@ li {
   margin-bottom: 2rem;
 }
 
+h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
 p {
   font-size: 1.1rem;
   line-height: 1.9rem;
