@@ -6,7 +6,8 @@ const $noEntries = document.querySelector('#no-entries');
 
 const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
 const $entriesDiv = document.querySelector('[data-view="entries"]');
-const $newEntries = document.querySelector('#new');
+const $entryFormAnchor = document.querySelector('#navbar-anchor');
+const $entriesAnchor = document.querySelector('#new');
 
 $photoURL.addEventListener('input', event => {
   const url = event.target.value;
@@ -84,7 +85,10 @@ document.addEventListener('DOMContentLoaded', event => {
   }
 });
 
-$newEntries.addEventListener('click', function (event) {
+$entryFormAnchor.addEventListener('click', function (event) {
+  viewSwap('entries');
+});
+$entriesAnchor.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
 

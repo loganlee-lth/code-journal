@@ -100,6 +100,19 @@ p {
   justify-content: center;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-left: 1.2rem;
+}
+
 .new-button {
   display: flex;
   justify-content: end;
