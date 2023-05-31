@@ -117,3 +117,17 @@ header a {
   justify-content: space-between;
   align-items: center;
 }
+
+.fa-pencil {
+  color: #674686;
+  cursor: pointer;
+  size: 3rem;
+}
+
+.fa-pencil:hover {
+  color: #572b81;
+}
+
+i {
+  font-size: 5rem;
+}

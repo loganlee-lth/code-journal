@@ -39,6 +39,7 @@ $form.addEventListener('submit', event => {
 function renderEntry(entry) {
   const $li = document.createElement('li');
   $li.setAttribute('class', 'row');
+  $li.setAttribute('data-entry-id', entry.entryId);
 
   const $imgCol = document.createElement('div');
   $imgCol.setAttribute('class', 'column-half');
@@ -49,9 +50,11 @@ function renderEntry(entry) {
   const $infoCol = document.createElement('div');
   $infoCol.setAttribute('class', 'column-half');
   const $titleRow = document.createElement('div');
-  $titleRow.setAttribute('class', 'row');
+  $titleRow.setAttribute('class', 'row space-between');
   const $entryTitle = document.createElement('h3');
   $entryTitle.textContent = entry.title;
+  const $entryEditIcon = document.createElement('i');
+  $entryEditIcon.setAttribute('class', 'fa-solid fa-pencil fa-lg');
   const $notesRow = document.createElement('div');
   $notesRow.setAttribute('class', 'row');
   const $entryNotes = document.createElement('p');
@@ -61,7 +64,10 @@ function renderEntry(entry) {
   $imgCol.appendChild($img);
   $li.appendChild($infoCol);
   $infoCol.appendChild($titleRow);
+  // Pencil
   $titleRow.appendChild($entryTitle);
+  $titleRow.appendChild($entryEditIcon);
+  //
   $infoCol.appendChild($notesRow);
   $notesRow.appendChild($entryNotes);
 
