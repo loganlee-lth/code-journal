@@ -23,10 +23,17 @@ $form.addEventListener('submit', event => {
   entryJSON.notes = $form.elements.notes.value;
   entryJSON.entryID = data.nextEntryId;
 
+  $ul.prepend(renderEntry(entryJSON));
   data.nextEntryId++;
   data.entries.unshift(entryJSON);
   $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
   $form.reset();
+
+  viewSwap('entries');
+
+  if ($noEntries.getAttribute('class') !== 'row hidden') {
+    toggleNoEntries();
+  }
 });
 
 function renderEntry(entry) {
@@ -77,8 +84,6 @@ function viewSwap(view) {
   data.view = view;
 }
 
-viewSwap($entriesDiv);
-
 document.addEventListener('DOMContentLoaded', event => {
   for (let i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
@@ -91,5 +96,3 @@ $entryFormAnchor.addEventListener('click', function (event) {
 $entriesAnchor.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
-
-toggleNoEntries();
