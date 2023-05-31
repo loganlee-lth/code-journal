@@ -13,8 +13,9 @@ form h2 {
   font-weight: 600;
 }
 
-form img {
+img {
   width: 100%;
+  border-radius: 0.25rem;
 }
 
 label {
@@ -55,12 +56,12 @@ textarea:focus {
   margin-top: 0.9rem;
 }
 
-.button-row-flex {
+.flex-end {
   display: flex;
   justify-content: flex-end;
 }
 
-.save-button {
+.purple-button {
   text-transform: uppercase;
   background-color: #562b81;
   color: #fff;
@@ -68,4 +69,51 @@ textarea:focus {
   border-radius: 0.25rem;
   padding: 0.5rem 1.2rem;
   cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.9rem;
+  letter-spacing: 0.04rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-left: 1.2rem;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

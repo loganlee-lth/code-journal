@@ -24,8 +24,9 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="column-full">
+        <div class="column-full navbar">
           <h1>Code Journal</h1>
+          <a href="#" id="navbar-anchor">Entries</a>
         </div>
       </div>
     </div>
@@ -41,7 +42,7 @@
         </div>
         <div class="row">
           <div class="column-half">
-            <img src="./images/placeholder-image-square.jpg" alt="placeholder iamge" id="photo-preview">
+            <img src="./images/placeholder-image-square.jpg" alt="placeholder image" id="photo-preview">
           </div>
           <div class="column-half">
             <div class="row">
@@ -71,13 +72,28 @@
         </div>
         <!-- Save button -->
         <div class="row button-row">
-          <div class="column-full button-row-flex">
-            <button type="submit" class="save-button">save</button>
+          <div class="column-full flex-end">
+            <button type="submit" class="purple-button">save</button>
           </div>
         </div>
       </form>
     </div>
-    <div data-view="entries" class="hidden"></div>
+    <!-- View entries -->
+    <div data-view="entries" class="hidden">
+      <div class="row">
+        <div class="column-full space-between">
+          <h2>Entries</h2>
+          <a id="new" class="purple-button">new</a>
+        </div>
+      </div>
+      <div id="no-entries" class="row">
+        <div class="column-full flex-center">
+          <p>No entries have been recorded.</p>
+        </div>
+      </div>
+      <ul>
+      </ul>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
