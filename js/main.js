@@ -31,7 +31,7 @@ $form.addEventListener('submit', event => {
 
   viewSwap('entries');
 
-  if ($noEntries.getAttribute('class') !== 'row hidden') {
+  if (data.entries.length > 0) {
     toggleNoEntries();
   }
 });
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', event => {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
   viewSwap(data.view);
-  if (data.entries.length === 0) {
+  if (data.entries.length > 0) {
     toggleNoEntries();
   }
 });
