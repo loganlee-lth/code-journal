@@ -6,6 +6,7 @@ const $noEntries = document.querySelector('#no-entries');
 
 const $entryFormDiv = document.querySelector('[data-view="entry-form"]');
 const $entriesDiv = document.querySelector('[data-view="entries"]');
+const $newEntries = document.querySelector('#new');
 
 $photoURL.addEventListener('input', event => {
   const url = event.target.value;
@@ -81,6 +82,10 @@ document.addEventListener('DOMContentLoaded', event => {
   for (let i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
+});
+
+$newEntries.addEventListener('click', function (event) {
+  viewSwap('entry-form');
 });
 
 toggleNoEntries();
