@@ -41,6 +41,7 @@ $form.addEventListener('submit', event => {
     $oldEntryLi.replaceWith(renderEntry(entryObj));
     $entryFormTitle.textContent = 'New Entry';
     data.editing = null;
+
   }
 
   if (data.entries.length > 0) {
