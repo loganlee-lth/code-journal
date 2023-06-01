@@ -88,7 +88,7 @@ h3 {
 
 p {
   font-size: 1.1rem;
-  line-height: 1.9rem;
+  line-height: 1.6rem;
   letter-spacing: 0.04rem;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -125,4 +125,8 @@ header a {
 
 .fa-pencil:hover {
   color: #572b81;
+}
+
+ul p {
+  white-space: pre-wrap;
 }
