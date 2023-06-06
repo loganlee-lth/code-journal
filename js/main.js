@@ -6,6 +6,7 @@ const $form = document.querySelector('form');
 const $entryFormAnchor = document.querySelector('#navbar-anchor');
 const $deleteButton = document.querySelector('#delete-button');
 const $background = document.querySelector('#background');
+const $cancelButton = document.querySelector('#cancel-button');
 
 const $entriesDiv = document.querySelector('[data-view="entries"]');
 const $ul = document.querySelector('ul');
@@ -147,8 +148,6 @@ $deleteButton.addEventListener('click', () => {
   $background.className = 'background';
 });
 
-// const $closeModal = document.querySelector('.close-modal');
-
-// function closeButton(event) {
-//   $background.className = 'background hidden';
-// }
+$cancelButton.addEventListener('click', () => {
+  $background.className = 'background hidden';
+});
