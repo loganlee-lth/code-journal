@@ -4,6 +4,7 @@ const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
 const $entryFormAnchor = document.querySelector('#navbar-anchor');
+const $deleteButton = document.querySelector('#delete-button');
 
 const $entriesDiv = document.querySelector('[data-view="entries"]');
 const $ul = document.querySelector('ul');
@@ -40,6 +41,7 @@ $form.addEventListener('submit', event => {
     const $oldEntryLi = document.querySelector("[data-entry-id='" + entryObj.entryId + "']");
     $oldEntryLi.replaceWith(renderEntry(entryObj));
     $entryFormTitle.textContent = 'New Entry';
+    $deleteButton.classList.add('hidden');
     data.editing = null;
 
   }
@@ -105,13 +107,13 @@ function viewSwap(view) {
 }
 
 document.addEventListener('DOMContentLoaded', event => {
+  if (data.entries.length > 0) {
+    toggleNoEntries();
+  }
   for (let i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
   viewSwap(data.view);
-  if (data.entries.length > 0) {
-    toggleNoEntries();
-  }
 });
 
 $entryFormAnchor.addEventListener('click', function (event) {
@@ -135,7 +137,7 @@ $ul.addEventListener('click', event => {
     $form.elements.url.value = data.editing.photoURL;
     $photoPreview.setAttribute('src', data.editing.photoURL);
     $form.elements.notes.value = data.editing.notes;
-
+    $deleteButton.classList.remove('hidden');
     viewSwap('entry-form');
   }
 });
