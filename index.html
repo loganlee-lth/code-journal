@@ -70,7 +70,7 @@
             <textarea name="notes" id="notes" rows="7" required></textarea>
           </div>
         </div>
-        <!-- Save button -->
+        <!-- Buttons -->
         <div class="row button-row">
           <div class="column-full space-between">
             <button type="button" id="delete-button" class="delete-button hidden">Delete Entry</button>
@@ -95,7 +95,24 @@
       <ul>
       </ul>
     </div>
+    <!-- Modal -->
+
   </main>
+  <div id="background" class="background hidden">
+    <div class="modal">
+      <div class="row">
+        <div class="column-full">
+          <p>Are you sure you want to delete this entry?</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-full space-between">
+          <button type="button" id="cancel-button">cancel</button>
+          <button type="button" id="confirm-button">confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
