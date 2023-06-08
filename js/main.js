@@ -4,6 +4,10 @@ const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector('#photo-preview');
 const $form = document.querySelector('form');
 const $entryFormAnchor = document.querySelector('#navbar-anchor');
+const $deleteButton = document.querySelector('#delete-button');
+const $background = document.querySelector('#background');
+const $cancelButton = document.querySelector('#cancel-button');
+const $confirmButton = document.querySelector('#confirm-button');
 
 const $entriesDiv = document.querySelector('[data-view="entries"]');
 const $ul = document.querySelector('ul');
@@ -17,14 +21,13 @@ $photoURL.addEventListener('input', event => {
 
 $form.addEventListener('submit', event => {
   event.preventDefault();
-
   const entryObj = {};
   entryObj.title = $form.elements.title.value;
   entryObj.photoURL = $form.elements.url.value;
   entryObj.notes = $form.elements.notes.value;
-  entryObj.entryId = data.nextEntryId;
 
   if (data.editing === null) {
+    entryObj.entryId = data.nextEntryId;
     data.nextEntryId++;
     data.entries.unshift(entryObj);
     $ul.prepend(renderEntry(entryObj));
@@ -34,21 +37,18 @@ $form.addEventListener('submit', event => {
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === data.editing.entryId) {
         data.entries[i] = entryObj;
+        break;
       }
     }
-
     const $oldEntryLi = document.querySelector("[data-entry-id='" + entryObj.entryId + "']");
     $oldEntryLi.replaceWith(renderEntry(entryObj));
     $entryFormTitle.textContent = 'New Entry';
+    $deleteButton.classList.add('hidden');
     data.editing = null;
   }
-
-  if (data.entries.length > 0) {
-    toggleNoEntries();
-  }
-  $form.reset();
-  $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
   viewSwap('entries');
+  $photoPreview.setAttribute('src', './images/placeholder-image-square.jpg');
+  $form.reset();
 });
 
 function renderEntry(entry) {
@@ -88,16 +88,32 @@ function renderEntry(entry) {
 }
 
 function toggleNoEntries() {
-  $noEntries.classList.add('hidden');
+  if (data.entries.length === 0) {
+    $noEntries.classList.remove('hidden');
+  } else {
+    $noEntries.classList.add('hidden');
+  }
 }
 
 function viewSwap(view) {
   if (view === 'entries') {
     $entriesDiv.classList.remove('hidden');
     $entryFormDiv.classList.add('hidden');
+
+    toggleNoEntries();
+
+    if (data.editing !== null) {
+      data.editing = null;
+    }
+
   } else if (view === 'entry-form') {
     $entriesDiv.classList.add('hidden');
     $entryFormDiv.classList.remove('hidden');
+    if (data.editing !== null) {
+      $deleteButton.classList.remove('hidden');
+    } else {
+      $deleteButton.classList.add('hidden');
+    }
   }
 
   data.view = view;
@@ -108,12 +124,16 @@ document.addEventListener('DOMContentLoaded', event => {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
   viewSwap(data.view);
-  if (data.entries.length > 0) {
-    toggleNoEntries();
-  }
 });
 
 $entryFormAnchor.addEventListener('click', function (event) {
+  viewSwap('entries');
+});
+
+$entriesAnchor.addEventListener('click', () => {
+  $form.reset();
+  $entryFormTitle.textContent = 'New Entry';
+  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
   viewSwap('entries');
 });
 
@@ -127,6 +147,7 @@ $ul.addEventListener('click', event => {
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === clickedEntryId) {
         data.editing = data.entries[i];
+        break;
       }
     }
     $entryFormTitle.textContent = 'Edit Entry';
@@ -134,7 +155,31 @@ $ul.addEventListener('click', event => {
     $form.elements.url.value = data.editing.photoURL;
     $photoPreview.setAttribute('src', data.editing.photoURL);
     $form.elements.notes.value = data.editing.notes;
-
     viewSwap('entry-form');
   }
+});
+
+$deleteButton.addEventListener('click', () => {
+  $background.className = 'background';
+});
+
+$cancelButton.addEventListener('click', () => {
+  $background.className = 'background hidden';
+});
+
+$confirmButton.addEventListener('click', event => {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  const $removedEntry = document.querySelector("[data-entry-id='" + data.editing.entryId + "']");
+  $removedEntry.remove($removedEntry);
+
+  $background.className = 'background hidden';
+  toggleNoEntries();
+  $form.reset();
+  $entryFormTitle.textContent = 'New Entry';
+  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+  viewSwap('entries');
 });

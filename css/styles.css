@@ -130,3 +130,63 @@ header a {
 ul p {
   white-space: pre-wrap;
 }
+
+.delete-button {
+  color: #df4546;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.margin-left {
+  margin-left: auto;
+}
+
+.background {
+  display: flex;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(50, 50, 50, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  height: 7rem;
+  width: 20rem;
+  border-radius: 0.2rem;
+  text-align: center;
+}
+
+.modal p {
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+#cancel-button,
+#confirm-button {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.8rem;
+}
+
+#cancel-button {
+  background-color: #b6b6b6;
+  color: #000;
+  margin-left: 0.9rem;
+}
+
+#confirm-button {
+  background-color: #dc2627;
+  color: #fff;
+  margin-right: 0.9rem;
+}
